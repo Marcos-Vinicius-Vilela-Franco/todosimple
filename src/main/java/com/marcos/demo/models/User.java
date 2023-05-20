@@ -4,6 +4,8 @@ package com.marcos.demo.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -40,4 +42,9 @@ public class User {
     
     @OneToMany(mappedBy = "user")
     private List<Task> tasks = new ArrayList<Task>();
+
+    @JsonIgnore
+    public List<Task> getTask(){
+        return this.tasks;
+    }
 }
